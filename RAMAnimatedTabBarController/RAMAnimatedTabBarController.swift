@@ -315,6 +315,29 @@ extension RAMAnimatedTabBarController {
         containerTo?.backgroundColor = items[to].bgSelectedColor
         items[to].playAnimation()
     }
+    
+    /// Selected UITabBarItem with NO animaton
+    open func setSelectIndexNoAnimations(_ toIndex: Int) {
+        selectedIndex = toIndex
+        guard let items = tabBar.items as? [RAMAnimatedTabBarItem] else {
+            fatalError("items must inherit RAMAnimatedTabBarItem")
+        }
+        
+        // deselect all first:
+        for i in items {
+            let containerFrom = i.iconView?.icon.superview
+            containerFrom?.backgroundColor = i.bgDefaultColor
+            i.deselectedState()
+        }
+        
+        guard items.count > toIndex else {
+            return
+        }
+        
+        let containerTo = items[toIndex].iconView?.icon.superview
+        containerTo?.backgroundColor = items[toIndex].bgSelectedColor
+        items[toIndex].selectedState()
+    }
 }
 
 

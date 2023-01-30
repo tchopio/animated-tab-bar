@@ -102,7 +102,7 @@ open class RAMAnimatedTabBarItem: UITabBarItem {
             return
         }
         
-        animation.deselectedState(iconView!.icon, textLabel: iconView!.textLabel)
+        animation.deselectedState(icon: iconView!.icon, textLabel: iconView!.textLabel, defaultTextColor: textColor, defaultIconColor: iconColor)
     }
 }
 

@@ -71,6 +71,18 @@ open class RAMBounceAnimation: RAMItemAnimation {
             icon.tintColor = iconSelectedColor
         }
     }
+    
+    open override func deselectedState(icon: UIImageView, textLabel: UILabel, defaultTextColor: UIColor, defaultIconColor: UIColor) {
+        textLabel.textColor = defaultTextColor
+
+        if let iconImage = icon.image {
+            let renderMode = defaultIconColor.cgColor.alpha == 0 ? UIImage.RenderingMode.alwaysOriginal :
+                UIImage.RenderingMode.alwaysTemplate
+            let renderImage = iconImage.withRenderingMode(renderMode)
+            icon.image = renderImage
+            icon.tintColor = defaultIconColor
+        }
+    }
 
     func playBounceAnimation(_ icon: UIImageView) {
 

@@ -95,6 +95,9 @@ open class RAMItemAnimation: NSObject, RAMItemAnimationProtocol {
      
      - parameter icon:      animating UITabBarItem icon
      - parameter textLabel: animating UITabBarItem textLabel
+     - parameter defaultTextColor: default UITabBarItem text color
+     - parameter defaultIconColor: default UITabBarItem icon color
      */
-    open func deselectedState(_: UIImageView, textLabel _: UILabel) {}
+    open func deselectedState(icon: UIImageView, textLabel: UILabel, defaultTextColor: UIColor, defaultIconColor: UIColor) {}
 }
+
